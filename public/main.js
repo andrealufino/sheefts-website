@@ -91,6 +91,44 @@ if (badge && !prefersReducedMotion) {
     badgeObserver.observe(badge);
 }
 
+// ─── Mobile nav hamburger ───
+var navHamburger = document.getElementById('navHamburger');
+var navMobile = document.getElementById('navMobile');
+
+function openMobileNav() {
+    navMobile.classList.add('open');
+    navMobile.setAttribute('aria-hidden', 'false');
+    navHamburger.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeMobileNav() {
+    navMobile.classList.remove('open');
+    navMobile.setAttribute('aria-hidden', 'true');
+    navHamburger.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+if (navHamburger && navMobile) {
+    navHamburger.addEventListener('click', function() {
+        if (navMobile.classList.contains('open')) {
+            closeMobileNav();
+        } else {
+            openMobileNav();
+        }
+    });
+
+    document.querySelectorAll('.nav__mobile-link').forEach(function(link) {
+        link.addEventListener('click', closeMobileNav);
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && navMobile.classList.contains('open')) {
+            closeMobileNav();
+        }
+    });
+}
+
 // ─── Smooth scroll for anchor links ───
 document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function(e) {

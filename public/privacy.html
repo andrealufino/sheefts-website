@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Privacy Policy — Sheefts</title>
-    <meta name="description" content="Informativa sulla privacy di Sheefts, l'app per la gestione dei turni di lavoro.">
+    <meta name="description" content="Informativa sulla privacy di Sheefts, l'app per la gestione dei turni di lavoro su iPhone.">
     <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#222222" media="(prefers-color-scheme: dark)">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="canonical" href="https://sheefts.com/privacy">
 
@@ -13,49 +15,187 @@
 
     <link rel="preload" href="/fonts/outfit.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/jetbrainsmono.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/style.css">
 
     <style>
-        .privacy-content {
+        .pp-wrap {
             max-width: 720px;
             margin: 0 auto;
-            padding: 120px 48px 80px;
+            padding: 120px 48px 100px;
         }
-        .privacy-content h1 {
+        .pp-header {
+            margin-bottom: 48px;
+        }
+        .pp-title {
             font-family: var(--font-display);
             font-size: clamp(32px, 4vw, 48px);
             font-weight: 700;
             letter-spacing: -0.03em;
             color: var(--text-primary);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
-        .privacy-content .updated {
+        .pp-updated {
             font-family: var(--font-mono);
             font-size: 12px;
             color: var(--text-muted);
             letter-spacing: 0.06em;
-            margin-bottom: 48px;
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
         }
-        .privacy-content h2 {
+        .pp-updated::before {
+            content: '';
+            width: 24px;
+            height: 1px;
+            background: var(--text-muted);
+            flex-shrink: 0;
+        }
+        /* ─── Language toggle ─── */
+        .pp-lang {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .pp-lang__btn {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 4px 10px;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: all 0.2s ease;
+        }
+        .pp-lang__btn:hover {
+            border-color: var(--border-hover);
+            color: var(--text-secondary);
+        }
+        .pp-lang__btn.active {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-bg);
+        }
+        /* ─── Table of contents ─── */
+        .pp-toc {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 48px;
+        }
+        .pp-toc__title {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .pp-toc__title::before {
+            content: '';
+            width: 20px;
+            height: 1px;
+            background: var(--text-muted);
+            flex-shrink: 0;
+        }
+        .pp-toc__list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .pp-toc__list a {
+            font-size: 14px;
+            font-weight: 300;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            line-height: 1.5;
+        }
+        .pp-toc__list a:hover {
+            color: var(--accent);
+        }
+        /* ─── Content ─── */
+        .pp-content { display: block; }
+        .hidden { display: none !important; }
+        .pp-section {
+            margin-bottom: 40px;
+        }
+        .pp-section h2 {
             font-family: var(--font-display);
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 600;
             letter-spacing: -0.02em;
             color: var(--text-primary);
-            margin-top: 40px;
             margin-bottom: 12px;
+            padding-top: 8px;
         }
-        .privacy-content p {
+        .pp-section h3 {
+            font-family: var(--font-body);
             font-size: 16px;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+        .pp-section p {
+            font-size: 15px;
             font-weight: 300;
             color: var(--text-secondary);
-            line-height: 1.75;
-            margin-bottom: 16px;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+        .pp-section ul {
+            margin: 8px 0 12px 0;
+            padding-left: 0;
+            list-style: none;
+        }
+        .pp-section ul li {
+            font-size: 15px;
+            font-weight: 300;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            padding-left: 16px;
+            position: relative;
+            margin-bottom: 6px;
+        }
+        .pp-section ul li::before {
+            content: '–';
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+        .pp-section a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .pp-section a:hover {
+            text-decoration: underline;
+        }
+        .pp-section strong {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        hr.pp-divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 40px 0;
         }
         @media (max-width: 640px) {
-            .privacy-content {
-                padding: 100px 20px 60px;
+            .pp-wrap {
+                padding: 100px 20px 80px;
+            }
+            .pp-toc {
+                padding: 20px;
             }
         }
     </style>
@@ -70,7 +210,16 @@
                 </div>
                 <span class="nav__wordmark">Sheefts</span>
             </a>
+            <ul class="nav__links">
+                <li><a href="/#problema" class="nav__link">il problema</a></li>
+                <li><a href="/#app" class="nav__link">la soluzione</a></li>
+                <li><a href="/#perche" class="nav__link">perche sheefts</a></li>
+                <li><a href="/#ultra" class="nav__link">in arrivo</a></li>
+            </ul>
             <div class="nav__right">
+                <button class="nav__hamburger" id="navHamburger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
                 <button class="theme-toggle" id="themeToggle" aria-label="Cambia tema">
                     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
@@ -87,22 +236,304 @@
         </nav>
     </div>
 
+    <nav class="nav__mobile" id="navMobile" aria-hidden="true">
+        <a href="/#problema" class="nav__mobile-link">il problema</a>
+        <a href="/#app" class="nav__mobile-link">la soluzione</a>
+        <a href="/#perche" class="nav__mobile-link">perche sheefts</a>
+        <a href="/#ultra" class="nav__mobile-link">in arrivo</a>
+    </nav>
+
     <main>
-        <div class="privacy-content">
-            <h1>Privacy Policy</h1>
-            <span class="updated">aggiornata il 18 febbraio 2026</span>
+        <div class="pp-wrap">
 
-            <h2>Nessun dato raccolto</h2>
-            <p>Sheefts non raccoglie, trasmette né condivide alcun dato personale. Tutti i dati inseriti nell'app (turni, orari, note) vengono salvati esclusivamente sul dispositivo dell'utente tramite iCloud.</p>
+            <!-- Header -->
+            <div class="pp-header">
+                <h1 class="pp-title">Privacy Policy</h1>
+                <span class="pp-updated" id="ppUpdated">aggiornata il 18 febbraio 2026</span>
+                <div class="pp-lang">
+                    <button class="pp-lang__btn active" id="btnIT" onclick="setLang('it')">IT</button>
+                    <button class="pp-lang__btn" id="btnEN" onclick="setLang('en')">EN</button>
+                </div>
+            </div>
 
-            <h2>iCloud Sync</h2>
-            <p>Se l'utente ha abilitato iCloud, i dati vengono sincronizzati attraverso il servizio iCloud di Apple. Tali dati sono accessibili solo all'utente e sono soggetti alla <a href="https://www.apple.com/legal/privacy/it/" target="_blank" rel="noopener" style="color: var(--accent);">Privacy Policy di Apple</a>.</p>
+            <!-- Table of contents IT -->
+            <nav class="pp-toc" id="tocIT">
+                <p class="pp-toc__title">indice</p>
+                <ol class="pp-toc__list">
+                    <li><a href="#it-titolare">Titolare del trattamento</a></li>
+                    <li><a href="#it-dati">Dati raccolti e finalità</a></li>
+                    <li><a href="#it-sync">Sincronizzazione e archiviazione</a></li>
+                    <li><a href="#it-widget">Widget</a></li>
+                    <li><a href="#it-notifiche">Notifiche push</a></li>
+                    <li><a href="#it-base">Base giuridica del trattamento</a></li>
+                    <li><a href="#it-condivisione">Condivisione dei dati</a></li>
+                    <li><a href="#it-conservazione">Conservazione dei dati</a></li>
+                    <li><a href="#it-diritti">Diritti dell'utente</a></li>
+                    <li><a href="#it-minori">Minori</a></li>
+                    <li><a href="#it-pubblicita">Pubblicità</a></li>
+                    <li><a href="#it-modifiche">Modifiche all'informativa</a></li>
+                    <li><a href="#it-contatti">Contatti</a></li>
+                </ol>
+            </nav>
 
-            <h2>Analisi dell'app</h2>
-            <p>Sheefts non utilizza SDK di analytics, tracking o advertising di terze parti. Non viene raccolto alcun dato sull'utilizzo dell'app.</p>
+            <!-- Table of contents EN -->
+            <nav class="pp-toc hidden" id="tocEN">
+                <p class="pp-toc__title">contents</p>
+                <ol class="pp-toc__list">
+                    <li><a href="#en-controller">Data controller</a></li>
+                    <li><a href="#en-data">Data collected and purposes</a></li>
+                    <li><a href="#en-sync">Sync and storage</a></li>
+                    <li><a href="#en-widget">Widget</a></li>
+                    <li><a href="#en-notifications">Push notifications</a></li>
+                    <li><a href="#en-basis">Legal basis for processing</a></li>
+                    <li><a href="#en-sharing">Data sharing</a></li>
+                    <li><a href="#en-retention">Data retention</a></li>
+                    <li><a href="#en-rights">Your rights</a></li>
+                    <li><a href="#en-children">Children</a></li>
+                    <li><a href="#en-advertising">Advertising</a></li>
+                    <li><a href="#en-changes">Changes to this policy</a></li>
+                    <li><a href="#en-contact">Contact</a></li>
+                </ol>
+            </nav>
 
-            <h2>Contatti</h2>
-            <p>Per qualsiasi domanda sulla privacy, scrivi a <a href="mailto:hello@sheefts.com" style="color: var(--accent);">hello@sheefts.com</a>.</p>
+            <!-- ─── Italian content ─── -->
+            <div class="pp-content" id="contentIT">
+
+                <div class="pp-section">
+                    <p>Andrea Mario Lufino (di seguito "Sviluppatore", "noi") è il titolare del trattamento dei dati personali raccolti tramite l'app Sheefts (di seguito "App"). Questa informativa descrive quali dati raccogliamo, come li utilizziamo e i tuoi diritti in merito, in conformità al Regolamento (UE) 2016/679 (GDPR).</p>
+                </div>
+
+                <hr class="pp-divider">
+
+                <div class="pp-section" id="it-titolare">
+                    <h2>Titolare del trattamento</h2>
+                    <p>Andrea Mario Lufino<br>Settimo Milanese (MI), Italia<br>Email: <a href="mailto:privacy@andrealufino.com">privacy@andrealufino.com</a></p>
+                </div>
+
+                <div class="pp-section" id="it-dati">
+                    <h2>Dati raccolti e finalità</h2>
+
+                    <h3>Dati forniti dall'utente</h3>
+                    <p>L'App consente di inserire informazioni relative ai propri turni di lavoro. Questi dati vengono archiviati localmente sul dispositivo e sincronizzati tramite iCloud se l'utente ha attivato questa funzionalità. I dati possono includere:</p>
+                    <ul>
+                        <li><strong>Nome</strong> (facoltativo): utilizzato per personalizzare l'esperienza nell'app.</li>
+                        <li><strong>Dati dei turni</strong>: date, orari di inizio e fine, pause, straordinari, note, tipologia di giornata (lavorativa, ferie, malattia, permesso).</li>
+                        <li><strong>Informazioni aziendali</strong>: nome dell'azienda, indirizzo, partita IVA.</li>
+                        <li><strong>Informazioni contrattuali</strong>: ore settimanali, retribuzione, ferie maturate, clausole contrattuali.</li>
+                        <li><strong>Dati retributivi</strong>: importi delle buste paga. Questi dati sono crittografati tramite CloudKit (<code>allowsCloudEncryption</code>).</li>
+                        <li><strong>Documenti allegati</strong>: file caricati dall'utente relativi a turni, contratti o uniformi.</li>
+                    </ul>
+
+                    <h3>Dati di posizione</h3>
+                    <p>L'App non accede alla posizione GPS del dispositivo. L'utente può inserire manualmente il nome di una città per ricevere informazioni meteo tramite Apple WeatherKit. Le coordinate della città selezionata vengono salvate localmente per il funzionamento del servizio meteo.</p>
+
+                    <h3>Dati raccolti automaticamente</h3>
+                    <p>Per migliorare l'App e comprendere come viene utilizzata, raccogliamo dati di utilizzo anonimi tramite:</p>
+                    <ul>
+                        <li><strong>Google Analytics tramite Firebase</strong> (Google): eventi di utilizzo, crash report, metriche di performance, dati demografici aggregati e report sull'audience. I dati vengono trattati secondo l'<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">informativa privacy di Google</a>.</li>
+                        <li><strong>Mixpanel</strong>: eventi di utilizzo come apertura schermate, salvataggio turni, interazioni con il calendario. Mixpanel tratta i dati nel cluster EU. Informativa: <a href="https://mixpanel.com/legal/privacy-policy" target="_blank" rel="noopener">mixpanel.com/legal/privacy-policy</a>.</li>
+                    </ul>
+                    <p>I dati analitici raccolti comprendono: eventi di navigazione (apertura schermate), azioni dell'utente (salvataggio, modifica, eliminazione turni), interazioni con l'interfaccia. Non vengono raccolti contenuti dei turni, dati retributivi o altre informazioni personali sensibili tramite analytics.</p>
+                    <p>Un identificativo anonimo di installazione (UUID) viene generato localmente per distinguere le installazioni a fini statistici. Questo identificativo non è collegato ad alcun dato personale.</p>
+
+                    <h3>Acquisti in-app</h3>
+                    <p>Gli acquisti vengono gestiti interamente da Apple tramite StoreKit. Non abbiamo accesso ai dati di pagamento dell'utente (carte di credito, metodo di pagamento). Riceviamo esclusivamente conferma dell'avvenuto acquisto e del tipo di abbonamento attivo.</p>
+                </div>
+
+                <div class="pp-section" id="it-sync">
+                    <h2>Sincronizzazione e archiviazione</h2>
+                    <p>I dati inseriti nell'App vengono salvati localmente sul dispositivo tramite SwiftData. Se l'utente ha iCloud attivo, i dati vengono sincronizzati automaticamente tramite CloudKit di Apple. I dati retributivi sono crittografati end-to-end tramite CloudKit. Lo Sviluppatore non ha accesso ai dati sincronizzati su iCloud: questi risiedono interamente nell'account Apple dell'utente.</p>
+                </div>
+
+                <div class="pp-section" id="it-widget">
+                    <h2>Widget</h2>
+                    <p>L'App include un widget (NextShifts) che accede ai dati dei turni tramite un App Group condiviso. Nessun dato viene trasmesso a server esterni tramite il widget.</p>
+                </div>
+
+                <div class="pp-section" id="it-notifiche">
+                    <h2>Notifiche push</h2>
+                    <p>L'App supporta notifiche push tramite Apple Push Notification Service (APNs). Le notifiche vengono utilizzate esclusivamente per funzionalità dell'App e non per scopi promozionali di terzi.</p>
+                </div>
+
+                <div class="pp-section" id="it-base">
+                    <h2>Base giuridica del trattamento</h2>
+                    <ul>
+                        <li><strong>Esecuzione del contratto</strong> (art. 6.1.b GDPR): per il funzionamento dell'App e l'erogazione del servizio.</li>
+                        <li><strong>Legittimo interesse</strong> (art. 6.1.f GDPR): per analytics e miglioramento dell'App.</li>
+                        <li><strong>Consenso</strong> (art. 6.1.a GDPR): per la sincronizzazione iCloud (gestita dall'utente tramite impostazioni di sistema).</li>
+                    </ul>
+                </div>
+
+                <div class="pp-section" id="it-condivisione">
+                    <h2>Condivisione dei dati</h2>
+                    <p>Non vendiamo, cediamo o condividiamo i tuoi dati personali con terzi per scopi commerciali o pubblicitari. I dati vengono condivisi esclusivamente con:</p>
+                    <ul>
+                        <li><strong>Apple</strong> (iCloud/CloudKit, WeatherKit, StoreKit, APNs): per le funzionalità integrate nell'ecosistema Apple.</li>
+                        <li><strong>Google</strong> (Google Analytics tramite Firebase): per analytics, monitoraggio crash e report sull'audience.</li>
+                        <li><strong>Mixpanel</strong>: per analytics sull'utilizzo.</li>
+                    </ul>
+                </div>
+
+                <div class="pp-section" id="it-conservazione">
+                    <h2>Conservazione dei dati</h2>
+                    <p>I dati dei turni e le informazioni inserite dall'utente vengono conservati sul dispositivo e su iCloud finché l'utente non li elimina. I dati analitici vengono conservati secondo le policy di conservazione di Firebase e Mixpanel (tipicamente 12–24 mesi).</p>
+                </div>
+
+                <div class="pp-section" id="it-diritti">
+                    <h2>Diritti dell'utente</h2>
+                    <p>In conformità al GDPR, hai diritto di:</p>
+                    <ul>
+                        <li><strong>Accesso</strong>: richiedere una copia dei dati che ti riguardano.</li>
+                        <li><strong>Rettifica</strong>: correggere dati inesatti.</li>
+                        <li><strong>Cancellazione</strong>: richiedere l'eliminazione dei tuoi dati.</li>
+                        <li><strong>Portabilità</strong>: ricevere i tuoi dati in formato leggibile.</li>
+                        <li><strong>Opposizione</strong>: opporti al trattamento per finalità di analytics.</li>
+                        <li><strong>Limitazione</strong>: richiedere la limitazione del trattamento.</li>
+                    </ul>
+                    <p>Per esercitare i tuoi diritti, contattaci all'indirizzo <a href="mailto:privacy@andrealufino.com">privacy@andrealufino.com</a>. Puoi inoltre eliminare tutti i dati locali disinstallando l'App e i dati su iCloud tramite le impostazioni di sistema del tuo dispositivo.</p>
+                </div>
+
+                <div class="pp-section" id="it-minori">
+                    <h2>Minori</h2>
+                    <p>L'App non è destinata a minori di 16 anni. Non raccogliamo consapevolmente dati personali di minori.</p>
+                </div>
+
+                <div class="pp-section" id="it-pubblicita">
+                    <h2>Pubblicità</h2>
+                    <p>L'App non contiene pubblicità e non utilizza dati personali per profilazione pubblicitaria.</p>
+                </div>
+
+                <div class="pp-section" id="it-modifiche">
+                    <h2>Modifiche all'informativa</h2>
+                    <p>Ci riserviamo di aggiornare questa informativa. In caso di modifiche sostanziali, verrà fornita notifica tramite l'App. La data di ultimo aggiornamento è riportata in cima al documento.</p>
+                </div>
+
+                <div class="pp-section" id="it-contatti">
+                    <h2>Contatti</h2>
+                    <p>Per qualsiasi domanda o richiesta relativa alla privacy, puoi contattarci a: <a href="mailto:privacy@andrealufino.com">privacy@andrealufino.com</a></p>
+                </div>
+
+            </div>
+
+            <!-- ─── English content ─── -->
+            <div class="pp-content hidden" id="contentEN">
+
+                <div class="pp-section">
+                    <p>Andrea Mario Lufino ("Developer", "we") is the data controller for the personal data collected through the Sheefts app ("App"). This policy describes what data we collect, how we use it, and your rights, in compliance with the EU General Data Protection Regulation (GDPR) 2016/679.</p>
+                </div>
+
+                <hr class="pp-divider">
+
+                <div class="pp-section" id="en-controller">
+                    <h2>Data controller</h2>
+                    <p>Andrea Mario Lufino<br>Settimo Milanese (MI), Italy<br>Email: <a href="mailto:privacy@andrealufino.com">privacy@andrealufino.com</a></p>
+                </div>
+
+                <div class="pp-section" id="en-data">
+                    <h2>Data collected and purposes</h2>
+
+                    <h3>Data provided by the user</h3>
+                    <p>The App allows you to enter information about your work shifts. This data is stored locally on your device and synced via iCloud if you have enabled this feature. Data may include:</p>
+                    <ul>
+                        <li><strong>Name</strong> (optional): used to personalize your experience in the app.</li>
+                        <li><strong>Shift data</strong>: dates, start and end times, breaks, overtime, notes, day type (working, vacation, sick leave, time off).</li>
+                        <li><strong>Company information</strong>: company name, address, VAT number.</li>
+                        <li><strong>Contract information</strong>: weekly hours, compensation, accrued leave, contractual clauses.</li>
+                        <li><strong>Payroll data</strong>: paycheck amounts. This data is encrypted via CloudKit (<code>allowsCloudEncryption</code>).</li>
+                        <li><strong>Attached documents</strong>: files uploaded by the user related to shifts, contracts, or uniforms.</li>
+                    </ul>
+
+                    <h3>Location data</h3>
+                    <p>The App does not access your device's GPS location. You may manually enter a city name to receive weather information via Apple WeatherKit. The coordinates of the selected city are stored locally to enable the weather service.</p>
+
+                    <h3>Data collected automatically</h3>
+                    <p>To improve the App and understand how it is used, we collect anonymous usage data through:</p>
+                    <ul>
+                        <li><strong>Google Analytics via Firebase</strong> (Google): usage events, crash reports, performance metrics, aggregated demographics and audience reports. Data is processed according to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's privacy policy</a>.</li>
+                        <li><strong>Mixpanel</strong>: usage events such as screen views, shift saves, and calendar interactions. Mixpanel processes data in the EU cluster. Policy: <a href="https://mixpanel.com/legal/privacy-policy" target="_blank" rel="noopener">mixpanel.com/legal/privacy-policy</a>.</li>
+                    </ul>
+                    <p>Analytics data collected includes: navigation events (screen views), user actions (saving, editing, deleting shifts), and interface interactions. Shift contents, payroll data, or other sensitive personal information are never collected through analytics.</p>
+                    <p>An anonymous installation identifier (UUID) is generated locally to distinguish installations for statistical purposes. This identifier is not linked to any personal data.</p>
+
+                    <h3>In-app purchases</h3>
+                    <p>Purchases are handled entirely by Apple through StoreKit. We do not have access to your payment data (credit cards, payment methods). We only receive confirmation of the purchase and the type of active subscription.</p>
+                </div>
+
+                <div class="pp-section" id="en-sync">
+                    <h2>Sync and storage</h2>
+                    <p>Data entered in the App is saved locally on your device via SwiftData. If you have iCloud enabled, data is automatically synced via Apple CloudKit. Payroll data is end-to-end encrypted via CloudKit. The Developer does not have access to data synced to iCloud — it resides entirely within your Apple account.</p>
+                </div>
+
+                <div class="pp-section" id="en-widget">
+                    <h2>Widget</h2>
+                    <p>The App includes a widget (NextShifts) that accesses shift data through a shared App Group. No data is transmitted to external servers through the widget.</p>
+                </div>
+
+                <div class="pp-section" id="en-notifications">
+                    <h2>Push notifications</h2>
+                    <p>The App supports push notifications via Apple Push Notification Service (APNs). Notifications are used exclusively for App functionality and not for third-party promotional purposes.</p>
+                </div>
+
+                <div class="pp-section" id="en-basis">
+                    <h2>Legal basis for processing</h2>
+                    <ul>
+                        <li><strong>Contract performance</strong> (Art. 6.1.b GDPR): to operate the App and deliver the service.</li>
+                        <li><strong>Legitimate interest</strong> (Art. 6.1.f GDPR): for analytics and App improvement.</li>
+                        <li><strong>Consent</strong> (Art. 6.1.a GDPR): for iCloud sync (managed by the user through system settings).</li>
+                    </ul>
+                </div>
+
+                <div class="pp-section" id="en-sharing">
+                    <h2>Data sharing</h2>
+                    <p>We do not sell, transfer, or share your personal data with third parties for commercial or advertising purposes. Data is shared exclusively with:</p>
+                    <ul>
+                        <li><strong>Apple</strong> (iCloud/CloudKit, WeatherKit, StoreKit, APNs): for features integrated into the Apple ecosystem.</li>
+                        <li><strong>Google</strong> (Google Analytics via Firebase): for analytics, crash monitoring, and audience reports.</li>
+                        <li><strong>Mixpanel</strong>: for usage analytics.</li>
+                    </ul>
+                </div>
+
+                <div class="pp-section" id="en-retention">
+                    <h2>Data retention</h2>
+                    <p>Shift data and user-entered information are retained on the device and iCloud until the user deletes them. Analytics data is retained according to Firebase and Mixpanel retention policies (typically 12–24 months).</p>
+                </div>
+
+                <div class="pp-section" id="en-rights">
+                    <h2>Your rights</h2>
+                    <p>Under the GDPR, you have the right to:</p>
+                    <ul>
+                        <li><strong>Access</strong>: request a copy of the data concerning you.</li>
+                        <li><strong>Rectification</strong>: correct inaccurate data.</li>
+                        <li><strong>Erasure</strong>: request deletion of your data.</li>
+                        <li><strong>Portability</strong>: receive your data in a readable format.</li>
+                        <li><strong>Objection</strong>: object to processing for analytics purposes.</li>
+                        <li><strong>Restriction</strong>: request restriction of processing.</li>
+                    </ul>
+                    <p>To exercise your rights, contact us at <a href="mailto:privacy@andrealufino.com">privacy@andrealufino.com</a>. You can also delete all local data by uninstalling the App and iCloud data through your device's system settings.</p>
+                </div>
+
+                <div class="pp-section" id="en-children">
+                    <h2>Children</h2>
+                    <p>The App is not intended for children under 16 years of age. We do not knowingly collect personal data from children.</p>
+                </div>
+
+                <div class="pp-section" id="en-advertising">
+                    <h2>Advertising</h2>
+                    <p>The App does not contain advertising and does not use personal data for advertising profiling.</p>
+                </div>
+
+                <div class="pp-section" id="en-changes">
+                    <h2>Changes to this policy</h2>
+                    <p>We reserve the right to update this policy. In case of material changes, notice will be provided through the App. The last update date is shown at the top of this document.</p>
+                </div>
+
+                <div class="pp-section" id="en-contact">
+                    <h2>Contact</h2>
+                    <p>For any questions or requests regarding privacy, you can contact us at: <a href="mailto:privacy@andrealufino.com">privacy@andrealufino.com</a></p>
+                </div>
+
+            </div>
+
         </div>
     </main>
 
@@ -111,12 +542,26 @@
             <span class="footer__made">Made by <a href="https://andrealufino.com" target="_blank" rel="noopener">Andrea Mario Lufino</a></span>
             <ul class="footer__links">
                 <li><a href="/" class="footer__link">Home</a></li>
-                <li><a href="mailto:hello@sheefts.com" class="footer__link">hello@sheefts.com</a></li>
             </ul>
             <span class="footer__copy">&copy; 2025-2026 Andrea Mario Lufino</span>
         </div>
     </footer>
 
     <script src="/main.js"></script>
+    <script>
+        function setLang(lang) {
+            var isIT = lang === 'it';
+            document.getElementById('contentIT').classList.toggle('hidden', !isIT);
+            document.getElementById('contentEN').classList.toggle('hidden', isIT);
+            document.getElementById('tocIT').classList.toggle('hidden', !isIT);
+            document.getElementById('tocEN').classList.toggle('hidden', isIT);
+            document.getElementById('btnIT').classList.toggle('active', isIT);
+            document.getElementById('btnEN').classList.toggle('active', !isIT);
+            document.getElementById('ppUpdated').textContent = isIT
+                ? 'aggiornata il 18 febbraio 2026'
+                : 'last updated February 18, 2026';
+            document.documentElement.lang = isIT ? 'it' : 'en';
+        }
+    </script>
 </body>
 </html>
