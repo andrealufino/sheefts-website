@@ -37,16 +37,7 @@ window.addEventListener('scroll', function() {
 var revealObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
         if (entry.isIntersecting) {
-            if (prefersReducedMotion) {
-                entry.target.classList.add('revealed');
-            } else {
-                var delay = parseFloat(entry.target.style.transitionDelay) || 0;
-                var extraDelay = delay * 1000;
-                setTimeout(function() {
-                    entry.target.classList.add('revealed');
-                }, extraDelay > 0 ? 0 : 0); // delays are already in CSS transition-delay
-                entry.target.classList.add('revealed');
-            }
+            entry.target.classList.add('revealed');
             revealObserver.unobserve(entry.target);
         }
     });

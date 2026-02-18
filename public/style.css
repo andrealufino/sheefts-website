@@ -865,7 +865,7 @@ html.dark .app-bars__label {
 }
 .app-bars__track {
     display: flex;
-    align-items: flex-end;
+    align-items: stretch;
     gap: 4px;
     height: 36px;
 }
@@ -1329,15 +1329,9 @@ html.dark .app-bars__day {
     .hero__subtitle {
         max-width: 100%;
     }
-    .hero__visual {
-        order: -1;
-    }
     .solution__feature {
         grid-template-columns: 1fr;
         gap: 40px;
-    }
-    .solution__feature--reverse {
-        direction: ltr;
     }
     .solution__text {
         align-items: center;
@@ -1345,6 +1339,12 @@ html.dark .app-bars__day {
     }
     .solution__mockup {
         order: -1;
+    }
+    .solution__feature--reverse .solution__mockup {
+        order: -1;
+    }
+    .solution__feature--reverse .solution__text {
+        order: 0;
     }
     .benefits__grid {
         grid-template-columns: repeat(2, 1fr);

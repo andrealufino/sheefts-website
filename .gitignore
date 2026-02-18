@@ -3,7 +3,4 @@
 *.swo
 .claude/
 .playwright-mcp/
-hero-check.png
-problem-section.png
-solution-fixed.png
-solution-section.png
+*.png

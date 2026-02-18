@@ -68,6 +68,19 @@ docs/
 - **App Store URL:** `https://apps.apple.com/app/id1448064158`
 - **Xcode project:** `/Users/aml/developer/iOS/personal/apps/sheefts`
 
+## Local testing
+
+**Never open `index.html` directly** (double-click / `file://`). All paths are absolute (`/style.css`, `/main.js`, `/fonts/*`) and will fail to resolve from the filesystem root.
+
+Run a local web server from the `public/` directory:
+
+```bash
+cd public && python3 -m http.server 8080
+# then open http://localhost:8080
+```
+
+Note: content below the hero starts at `opacity: 0` and animates in on scroll (IntersectionObserver). Scroll through the page to see all sections.
+
 ## Deploy
 
 ```bash
