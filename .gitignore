@@ -3,4 +3,4 @@
 *.swo
 .claude/
 .playwright-mcp/
-*.png
+/*.png
