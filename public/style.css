@@ -343,11 +343,11 @@ html.dark .icon-moon { display: none; }
     transform: translateY(-2px);
     opacity: 0.85;
 }
-.appstore-badge svg {
+.appstore-badge img {
     height: 52px;
     width: auto;
 }
-.appstore-badge.cta-glow svg {
+.appstore-badge.cta-glow img {
     animation: badgeGlow 1.5s var(--ease) forwards;
 }
 .hero__visual {
