@@ -213,7 +213,7 @@
             <ul class="nav__links">
                 <li><a href="/#problema" class="nav__link">il problema</a></li>
                 <li><a href="/#app" class="nav__link">la soluzione</a></li>
-                <li><a href="/#perche" class="nav__link">perche sheefts</a></li>
+                <li><a href="/#perche" class="nav__link">perché sheefts</a></li>
                 <li><a href="/#ultra" class="nav__link">in arrivo</a></li>
             </ul>
             <div class="nav__right">
@@ -239,7 +239,7 @@
     <nav class="nav__mobile" id="navMobile" aria-hidden="true">
         <a href="/#problema" class="nav__mobile-link">il problema</a>
         <a href="/#app" class="nav__mobile-link">la soluzione</a>
-        <a href="/#perche" class="nav__mobile-link">perche sheefts</a>
+        <a href="/#perche" class="nav__mobile-link">perché sheefts</a>
         <a href="/#ultra" class="nav__mobile-link">in arrivo</a>
     </nav>
 
@@ -251,8 +251,8 @@
                 <h1 class="pp-title">Privacy Policy</h1>
                 <span class="pp-updated" id="ppUpdated">aggiornata il 18 febbraio 2026</span>
                 <div class="pp-lang">
-                    <button class="pp-lang__btn active" id="btnIT" onclick="setLang('it')">IT</button>
-                    <button class="pp-lang__btn" id="btnEN" onclick="setLang('en')">EN</button>
+                    <button class="pp-lang__btn active" id="btnIT">IT</button>
+                    <button class="pp-lang__btn" id="btnEN">EN</button>
                 </div>
             </div>
 
@@ -261,6 +261,7 @@
                 <p class="pp-toc__title">indice</p>
                 <ol class="pp-toc__list">
                     <li><a href="#it-titolare">Titolare del trattamento</a></li>
+                    <li><a href="#it-principi">Principi fondamentali</a></li>
                     <li><a href="#it-dati">Dati raccolti e finalità</a></li>
                     <li><a href="#it-sync">Sincronizzazione e archiviazione</a></li>
                     <li><a href="#it-widget">Widget</a></li>
@@ -281,6 +282,7 @@
                 <p class="pp-toc__title">contents</p>
                 <ol class="pp-toc__list">
                     <li><a href="#en-controller">Data controller</a></li>
+                    <li><a href="#en-principles">Key principles</a></li>
                     <li><a href="#en-data">Data collected and purposes</a></li>
                     <li><a href="#en-sync">Sync and storage</a></li>
                     <li><a href="#en-widget">Widget</a></li>
@@ -307,7 +309,15 @@
 
                 <div class="pp-section" id="it-titolare">
                     <h2>Titolare del trattamento</h2>
-                    <p>Andrea Mario Lufino<br>Settimo Milanese (MI), Italia<br>Email: <a href="mailto:privacy@andrealufino.com">privacy@andrealufino.com</a></p>
+                    <p>Andrea Mario Lufino<br>Italia<br>Email: <a href="mailto:privacy@andrealufino.com">privacy@andrealufino.com</a></p>
+                </div>
+
+                <div class="pp-section" id="it-principi">
+                    <h2>Principi fondamentali</h2>
+                    <ul>
+                        <li><strong>Nessun account richiesto</strong>: l'App non richiede la creazione di un account. Tutti i dati vengono salvati localmente sul dispositivo e, se attivato dall'utente, sincronizzati tramite il proprio account iCloud personale.</li>
+                        <li><strong>Nessuna associazione ai dati dell'utente</strong>: l'App non associa in alcun modo i dati raccolti all'identità dell'utente. Tutti i dati analitici sono raccolti in forma completamente anonima e non possono essere ricondotti a un utente specifico.</li>
+                    </ul>
                 </div>
 
                 <div class="pp-section" id="it-dati">
@@ -426,7 +436,15 @@
 
                 <div class="pp-section" id="en-controller">
                     <h2>Data controller</h2>
-                    <p>Andrea Mario Lufino<br>Settimo Milanese (MI), Italy<br>Email: <a href="mailto:privacy@andrealufino.com">privacy@andrealufino.com</a></p>
+                    <p>Andrea Mario Lufino<br>Italy<br>Email: <a href="mailto:privacy@andrealufino.com">privacy@andrealufino.com</a></p>
+                </div>
+
+                <div class="pp-section" id="en-principles">
+                    <h2>Key principles</h2>
+                    <ul>
+                        <li><strong>No account required</strong>: the App does not require you to create an account. All data is stored locally on your device and, if enabled by you, synced through your personal iCloud account.</li>
+                        <li><strong>No data linked to your identity</strong>: the App does not associate any collected data with your identity in any way. All analytics data is collected in a completely anonymous form and cannot be traced back to a specific user.</li>
+                    </ul>
                 </div>
 
                 <div class="pp-section" id="en-data">
@@ -562,6 +580,8 @@
                 : 'last updated February 18, 2026';
             document.documentElement.lang = isIT ? 'it' : 'en';
         }
+        document.getElementById('btnIT').addEventListener('click', function() { setLang('it'); });
+        document.getElementById('btnEN').addEventListener('click', function() { setLang('en'); });
     </script>
 </body>
 </html>
