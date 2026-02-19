@@ -22,7 +22,7 @@ var navTicking = false;
 window.addEventListener('scroll', function() {
     if (!navTicking) {
         requestAnimationFrame(function() {
-            var shouldBeScrolled = window.scrollY > 50;
+            var shouldBeScrolled = window.scrollY > (window.innerWidth <= 640 ? 50 : 100);
             if (shouldBeScrolled !== navScrolled) {
                 navScrolled = shouldBeScrolled;
                 navWrap.classList.toggle('scrolled', navScrolled);
