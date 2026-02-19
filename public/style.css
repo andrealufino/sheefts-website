@@ -501,20 +501,20 @@ html.dark .iphone {
 }
 .iphone__screen {
     position: absolute;
-    inset: 10px;
+    inset: 6px;
     background: #000;
-    border-radius: 36px;
+    border-radius: 39px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
 }
 .iphone--sm .iphone__screen {
-    inset: 8px;
-    border-radius: 31px;
+    inset: 5px;
+    border-radius: 34px;
 }
 .iphone--xs .iphone__screen {
-    inset: 7px;
-    border-radius: 26px;
+    inset: 4px;
+    border-radius: 29px;
 }
 .iphone__screen > img {
     width: 100%;
